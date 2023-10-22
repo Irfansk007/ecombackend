@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  email      String   @unique
+  name       String
+  password   String
+  ProfilePic String?
+  createdAt  DateTime @default(now())
+
+  //cartItems []
+  Comment        Comment[]
+  PurchasedItems PurchasedItems[]
+}
+
+model Products {
+  id             String           @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  image          String[]
+  Categories     String
+  Rating         Int?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  Comment        Comment[]
+  purchasedItems PurchasedItems[]
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  User      User     @relation(fields: [userid], references: [id])
+  userid    String   @db.ObjectId
+  product   Products @relation(fields: [productid], references: [id])
+  productid String   @db.ObjectId
+}
+
+model PurchasedItems {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  Product       Products @relation(fields: [Items], references: [id])
+  Items         String   @db.ObjectId
+  pruchasedTime DateTime @default(now())
+  purchasedby   User     @relation(fields: [purchasedUser], references: [id])
+  purchasedUser String   @db.ObjectId
+}
+
+model Admin {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  email    String  @unique
+  password String
+  isAdmin  Boolean
+}
