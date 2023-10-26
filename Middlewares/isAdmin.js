@@ -4,6 +4,7 @@ const jwt_secret = process.env.JWT_SECRET
 
 export const isAdmin = async (req, res, next) => {
     const { token } = req.cookies
+   
 
     try {
         const isAdminContent = await jwt.verify(token, `${jwt_secret}`)

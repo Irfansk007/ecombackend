@@ -1,4 +1,4 @@
-import express, { urlencoded } from "express"
+import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import UserRoute from "./Routes/UserRoute.js"
@@ -13,7 +13,7 @@ dotenv.config()
 
 //middleware
 app.use(express.json())
-app.use(urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}))
 app.use(cors())
 app.use(cookieParser())
 app.use('/static',express.static('images'))

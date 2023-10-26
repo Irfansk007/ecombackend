@@ -25,10 +25,15 @@ model User {
 
 model Products {
   id             String           @id @default(auto()) @map("_id") @db.ObjectId
-  name           String
+  title           String
   image          String[]
-  Categories     String
-  Rating         Int?
+  thumbnail      String
+  categories     String
+  price Int
+  description    String?
+  rating         Int?
+  stocks         Int
+  brand          String
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
   Comment        Comment[]

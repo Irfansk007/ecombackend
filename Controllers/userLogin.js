@@ -7,7 +7,7 @@ export const userRegister = async (req, res) => {
     const { name, email, password } = req.body
     console.log(name,email,password)
     try {
-        const user = await prisma.user.findFirst({
+        const user = await prisma.user.findUnique({
             where: {
                 email: email,
             }
