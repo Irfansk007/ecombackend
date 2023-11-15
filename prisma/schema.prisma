@@ -25,11 +25,11 @@ model User {
 
 model Products {
   id             String           @id @default(auto()) @map("_id") @db.ObjectId
-  title           String
+  title          String
   image          String[]
   thumbnail      String
   categories     String
-  price Int
+  price          Int
   description    String?
   rating         Int?
   stocks         Int

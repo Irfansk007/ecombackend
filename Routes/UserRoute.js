@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { userRegister, userLogin, userAdminLogin } from "../Controllers/userLogin.js";
 import { isAdmin } from "../Middlewares/isAdmin.js";
-import { ProductsAdd, deleteProduct, getProduct, updateProduct } from "../Controllers/Products.js";
+import { ProductsAdd, deleteProduct, getAllProducts, updateProduct } from "../Controllers/Products.js";
 import upload from "../utils/multer.js";
 
 
@@ -22,7 +22,7 @@ UserRoute.put('/update', isAdmin, upload.fields([{name:"image"},{name:"thumbnail
 UserRoute.delete('/delete/:id',isAdmin,deleteProduct)
 
 
-UserRoute.get('/getProducts',getProduct)
+UserRoute.get('/getProducts',getAllProducts)
 
 
 //UserRoute.post('/add/v1',upload.fields([{name:"image"},{name:"thumbnail"}]), ProductsAdd)
