@@ -136,7 +136,7 @@ export const deleteProduct = async (req, res) => {
 export const getAllProducts = async (req, res) => {
     try {
         const productList = await prisma.products.findMany()
-        return res.status(200).json({ productList })
+        return res.status(200).json( productList )
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }

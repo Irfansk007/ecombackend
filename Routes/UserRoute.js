@@ -25,5 +25,9 @@ UserRoute.delete('/delete/:id',isAdmin,deleteProduct)
 UserRoute.get('/getProducts',getAllProducts)
 
 
+
+
+
+
 //UserRoute.post('/add/v1',upload.fields([{name:"image"},{name:"thumbnail"}]), ProductsAdd)
 export default UserRoute
